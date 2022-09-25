@@ -1,4 +1,4 @@
-name: Deploy
+name: CD
 on:
   workflow_run: 
     workflows: [Master CI]
@@ -26,4 +26,4 @@ jobs:
           environment_name: Springbootdeploy-env
           version_label: ${{github.SHA}}
           region: us-east-1
-          deployment_package: openapi-spring-1.22.1.jar
+          deployment_package: springboot/target/openapi-spring-1.22.1.jar
