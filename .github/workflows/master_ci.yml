@@ -50,4 +50,4 @@ jobs:
           #Set artifact name
           name: artifact
           #From this path
-          path: target/openapi-spring-1.22.1.jar
+          path: springboot/target/openapi-spring-1.22.1.jar
