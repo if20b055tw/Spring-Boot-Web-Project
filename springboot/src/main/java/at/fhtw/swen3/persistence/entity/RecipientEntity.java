@@ -1,15 +1,15 @@
 package at.fhtw.swen3.persistence.entity;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
-@Getter
-@Setter
+
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class RecipientEntity {
     @Column
     private String name;
@@ -25,4 +25,9 @@ public class RecipientEntity {
 
     @Column
     private String country;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @Column
+    private Long id;
 }

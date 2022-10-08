@@ -4,8 +4,13 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 import javax.annotation.Generated;
@@ -13,24 +18,34 @@ import javax.annotation.Generated;
 /**
  * Recipient
  */
-
+@Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @JsonTypeName("recipient")
+
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-20T11:34:14.505164Z[Etc/UTC]")
 public class Recipient {
 
   @JsonProperty("name")
+  @Pattern(regexp = "[A-Z][A-Za-z0-9- ]*")
   private String name;
 
+  @Pattern(regexp = "[A-Za-z]+ [0-9]+[0-9a-z/]*")
   @JsonProperty("street")
   private String street;
 
+  @Pattern(regexp = "A-[0-9]{4}")
   @JsonProperty("postalCode")
   private String postalCode;
 
   @JsonProperty("city")
+  @Pattern(regexp = "[A-Z][A-Za-z0-9- ]*")
   private String city;
 
   @JsonProperty("country")
+  @Pattern(regexp = "[A-Za-zÖöÄäÜü]+")
   private String country;
 
   public Recipient name(String name) {

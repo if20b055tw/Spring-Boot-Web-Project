@@ -5,9 +5,14 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
+import javax.persistence.Entity;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 import javax.annotation.Generated;
@@ -16,17 +21,25 @@ import javax.annotation.Generated;
  * Parcel
  */
 
+@Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @JsonTypeName("parcel")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-20T11:34:14.505164Z[Etc/UTC]")
 public class Parcel {
 
   @JsonProperty("weight")
+  @Min(0)
   private Float weight;
 
   @JsonProperty("recipient")
+  @NotNull
   private Recipient recipient;
 
   @JsonProperty("sender")
+  @NotNull
   private Recipient sender;
 
   public Parcel weight(Float weight) {

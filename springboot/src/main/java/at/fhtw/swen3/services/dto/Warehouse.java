@@ -82,6 +82,7 @@ public class Warehouse extends Hop {
     return this;
   }
 
+
   public Warehouse description(String description) {
     super.setDescription(description);
     return this;

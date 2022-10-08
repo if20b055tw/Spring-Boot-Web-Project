@@ -11,6 +11,7 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 
 
 import javax.annotation.Generated;
@@ -19,6 +20,7 @@ import javax.annotation.Generated;
  * TrackingInformation
  */
 
+@Builder
 @JsonTypeName("trackingInformation")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-20T11:34:14.505164Z[Etc/UTC]")
 public class TrackingInformation {
@@ -69,10 +71,12 @@ public class TrackingInformation {
 
   @JsonProperty("visitedHops")
   @Valid
+  @NotNull
   private List<HopArrival> visitedHops = new ArrayList<>();
 
   @JsonProperty("futureHops")
   @Valid
+  @NotNull
   private List<HopArrival> futureHops = new ArrayList<>();
 
   public TrackingInformation state(StateEnum state) {
