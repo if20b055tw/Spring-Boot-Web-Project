@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Master CI
+name: CI/CD
 
 # Controls when the workflow will run
 on:
@@ -18,6 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
+    name: Master CI
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -41,3 +42,38 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
+      # Upload the application
+      - name: Upload JAR
+        #This uploads artifacts from your workflow allowing you to share data between jobs and store data once a workflow is complete.
+        uses: actions/upload-artifact@v2
+        with:
+          #Set artifact name
+          name: artifact
+          #From this path
+          path: springboot/target/openapi-spring-1.22.1.jar
+          
+  deploy:
+    #Run on Ubuntu using the latest version
+    runs-on: ubuntu-latest
+    needs: build
+    name: CD
+    steps:
+      - name: Download JAR
+        #Download the artifact which was uploaded in the build's job
+        uses: actions/download-artifact@v2
+        with:
+          name: artifact
+      #Deploy the artifact (JAR) into AWS Beanstalk
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v13
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          #aws_session_token: ${{ secrets.AWS_SESSION_TOKEN }}
+          use_existing_version_if_available: false
+          application_name: spring-boot-deploy
+          environment_name: Springbootdeploy-env
+          version_label: ${{github.SHA}}
+          region: us-east-1
+          deployment_package: openapi-spring-1.22.1.jar
