@@ -1,4 +1,4 @@
-package at.fhtw.swen3.persistence;
+package at.fhtw.swen3.services.dto;
 
 import java.util.Objects;
 
@@ -81,6 +81,7 @@ public class Warehouse extends Hop {
     super.setCode(code);
     return this;
   }
+
 
   public Warehouse description(String description) {
     super.setDescription(description);
