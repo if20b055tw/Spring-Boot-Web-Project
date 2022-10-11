@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.*;
+import java.util.Arrays;
 import java.util.Set;
 
 @Service
@@ -16,14 +17,29 @@ public class ParcelService {
     @Autowired
     private ParcelMapper parcelMapStruct;
 
-    public void savePostalCode(@Valid Recipient recipient){
+    public void savePostalCode(@Valid Recipient recipient) {
+
+        /*ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+
+        Set<ConstraintViolation<Recipient>> violations = validator.validate(recipient);
+        for (ConstraintViolation<Recipient> violation : violations) {
+            log.error(violation.getMessage());
+        }*/
+
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
 
         Set<ConstraintViolation<Recipient>> violations = validator.validate(recipient);
         for (ConstraintViolation<Recipient> violation : violations) {
-            log.error(violation.getMessage());
+            if (recipient.getCountry().equals("Österreich") || recipient.getCountry().equals("Austria")) {
+                log.error(violation.getMessage());
+            }
+
+            if (!Arrays.asList("postalCode", "street", "name", "city").contains(String.valueOf(violation.getPropertyPath()))) {
+                log.error(violation.getMessage());
+            }
         }
     }
 }
