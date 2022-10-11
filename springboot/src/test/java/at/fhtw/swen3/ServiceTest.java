@@ -19,10 +19,10 @@ public class ServiceTest {
                 .name("Thomas")
                 .postalCode("2314")
                 .city("Thseran")
-                .country("ptbs")
+                .country("Österreich")
                 .build();
 
-        //parcelService.savePostalCode(recipient);
+        parcelService.savePostalCode(recipient);
 
     }
 
