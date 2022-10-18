@@ -29,23 +29,18 @@ import javax.annotation.Generated;
 public class Recipient {
 
   @JsonProperty("name")
-  @Pattern(regexp = "[A-Z][A-Za-z0-9- ]*")
   private String name;
 
-  @Pattern(regexp = "[A-Za-z]+ [0-9]+[0-9a-z/]*")
   @JsonProperty("street")
   private String street;
 
-  @Pattern(regexp = "A-[0-9]{4}")
   @JsonProperty("postalCode")
   private String postalCode;
 
   @JsonProperty("city")
-  @Pattern(regexp = "[A-Z][A-Za-z0-9- ]*")
   private String city;
 
   @JsonProperty("country")
-  @Pattern(regexp = "[A-Za-zÖöÄäÜü]+")
   private String country;
 
   public Recipient name(String name) {

@@ -23,7 +23,6 @@ public class NewParcelInfo {
   @JsonProperty("trackingId")
   private String trackingId;
 
-  @Pattern(regexp = "^[A-Z0-9]{9}$")
   public NewParcelInfo trackingId(String trackingId) {
     this.trackingId = trackingId;
     return this;
