@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.time.OffsetDateTime;
 
 @Entity
@@ -14,6 +15,7 @@ import java.time.OffsetDateTime;
 @Data
 public class HopArrivalEntity {
     @Column
+    @Pattern(regexp = "^[A-Z]{4}\\d{1,4}$")
     private String code;
 
     @ManyToOne
@@ -21,6 +23,7 @@ public class HopArrivalEntity {
     private ParcelEntity parcel;
 
     @Column
+    @Pattern(regexp = "[A-Za-z0-9- ]+")
     private String description;
 
     @Column
