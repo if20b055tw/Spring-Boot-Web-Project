@@ -1,7 +1,10 @@
-package at.fhtw.swen3.persistence.entity;
+package at.fhtw.swen3.model.entities;
 
 import at.fhtw.swen3.services.dto.TrackingInformation;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -10,36 +13,35 @@ import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ParcelEntity {
+public class ParcelDal {
     @Column
     @Min(0)
     private Float weight;
 
     @OneToOne
     @NotNull
-    private RecipientEntity recipient;
+    private RecipientDal recipient;
 
     @OneToOne
     @NotNull
-    private RecipientEntity sender;
+    private RecipientDal sender;
 
     @Column
     private TrackingInformation.StateEnum state;
 
     @OneToMany(mappedBy = "parcel")
-    private List<HopArrivalEntity> visitedHops = new ArrayList<>();
+    private List<HopArrivalDal> visitedHops = new ArrayList<>();
 
     @OneToMany(mappedBy = "parcel")
-    private List<HopArrivalEntity> futureHops = new ArrayList<>();
+    private List<HopArrivalDal> futureHops = new ArrayList<>();
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Pattern(regexp = "^[A-Z0-9]{9}$")
     @Column
     private String trackingId;

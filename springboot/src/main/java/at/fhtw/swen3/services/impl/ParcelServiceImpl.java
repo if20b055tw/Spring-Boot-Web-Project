@@ -3,12 +3,9 @@ package at.fhtw.swen3.services.impl;
 import at.fhtw.swen3.services.MyValidator;
 import at.fhtw.swen3.services.ParcelService;
 import at.fhtw.swen3.services.dto.Recipient;
-import at.fhtw.swen3.services.mapper.ParcelMapper;
+import at.fhtw.swen3.services.mapper.OldParcelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Service;
 
 import javax.validation.*;
 import java.util.Arrays;
@@ -18,7 +15,7 @@ import java.util.Set;
 @Slf4j
 public class ParcelServiceImpl implements ParcelService {
 
-    private final ParcelMapper parcelMapStruct;
+    private final OldParcelMapper parcelMapStruct;
 
     private final MyValidator myValidator;
 
