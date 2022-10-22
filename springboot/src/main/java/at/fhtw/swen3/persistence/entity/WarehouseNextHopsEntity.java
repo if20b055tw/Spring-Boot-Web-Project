@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Builder
@@ -18,10 +19,12 @@ public class WarehouseNextHopsEntity {
 
     @Column
     @OneToOne
+    @NotNull
     private HopEntity hop;
 
     @ManyToOne
     @JoinColumn(name = "fk_warehouse")
+    @NotNull
     private WarehouseEntity warehouseEntity;
 
     @Id

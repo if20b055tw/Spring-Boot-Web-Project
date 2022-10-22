@@ -1,9 +1,10 @@
-package at.fhtw.swen3.services.mapper;
+package at.fhtw.swen3.services.mapper.old;
 
 import at.fhtw.swen3.persistence.entity.ParcelEntity;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.dto.TrackingInformation;
+import at.fhtw.swen3.services.mapper.AbstractMapper;
 import at.fhtw.swen3.utils.Triple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,18 +32,15 @@ public class OldParcelMapper extends AbstractMapper<Triple<Parcel, NewParcelInfo
     @Override
     public Triple<Parcel, NewParcelInfo, TrackingInformation> mapToSource(ParcelEntity object) {
         return new Triple<>(
-                Parcel.builder()
+                new Parcel()
                     .recipient(oldRecipientMapper.mapToSource(object.getRecipient()))
                     .sender(oldRecipientMapper.mapToSource(object.getSender()))
-                    .weight(object.getWeight())
-                    .build(),
-                NewParcelInfo.builder()
-                    .trackingId(object.getTrackingId())
-                    .build(),
-                TrackingInformation.builder()
+                    .weight(object.getWeight()),
+                new NewParcelInfo()
+                    .trackingId(object.getTrackingId()),
+                new TrackingInformation()
                     .futureHops(oldHopArrivalMapper.mapToSource(object.getFutureHops()))
                     .visitedHops(oldHopArrivalMapper.mapToSource(object.getVisitedHops()))
-                    .state(object.getState())
-                    .build());
+                    .state(object.getState()));
     }
 }

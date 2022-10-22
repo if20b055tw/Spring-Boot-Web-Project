@@ -4,23 +4,31 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class WarehouseEntity {
+public class WarehouseEntity extends HopEntity {
     @Column
     private Integer level;
 
     @Column
     @OneToMany
-    private List<WarehouseNextHopsEntity> nextHops = new ArrayList<>();
+    @NotNull
+    private List<@NotNull WarehouseNextHopsEntity> nextHops = new ArrayList<>();
+
+    @Column
+    @Pattern(regexp = "[A-ZÄÖÜa-zäöüß0-9-/ ]*")
+    private String description;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")

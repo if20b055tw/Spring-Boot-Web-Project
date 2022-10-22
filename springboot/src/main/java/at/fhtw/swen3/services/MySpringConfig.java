@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services;
 
 import at.fhtw.swen3.services.impl.ParcelServiceImpl;
-import at.fhtw.swen3.services.mapper.OldParcelMapper;
+import at.fhtw.swen3.services.mapper.old.OldParcelMapper;
 import org.springframework.context.annotation.Bean;
 
 public class MySpringConfig {

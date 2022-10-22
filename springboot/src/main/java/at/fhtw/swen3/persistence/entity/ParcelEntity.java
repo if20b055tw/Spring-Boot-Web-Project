@@ -34,10 +34,12 @@ public class ParcelEntity {
     private TrackingInformation.StateEnum state;
 
     @OneToMany(mappedBy = "parcel")
-    private List<HopArrivalEntity> visitedHops = new ArrayList<>();
+    @NotNull
+    private List<@NotNull HopArrivalEntity> visitedHops = new ArrayList<>();
 
     @OneToMany(mappedBy = "parcel")
-    private List<HopArrivalEntity> futureHops = new ArrayList<>();
+    @NotNull
+    private List<@NotNull HopArrivalEntity> futureHops = new ArrayList<>();
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Pattern(regexp = "^[A-Z0-9]{9}$")

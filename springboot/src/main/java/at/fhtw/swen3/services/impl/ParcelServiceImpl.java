@@ -3,7 +3,7 @@ package at.fhtw.swen3.services.impl;
 import at.fhtw.swen3.services.MyValidator;
 import at.fhtw.swen3.services.ParcelService;
 import at.fhtw.swen3.services.dto.Recipient;
-import at.fhtw.swen3.services.mapper.OldParcelMapper;
+import at.fhtw.swen3.services.mapper.old.OldParcelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

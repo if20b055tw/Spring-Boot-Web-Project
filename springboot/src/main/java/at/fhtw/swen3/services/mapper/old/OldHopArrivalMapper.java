@@ -1,7 +1,8 @@
-package at.fhtw.swen3.services.mapper;
+package at.fhtw.swen3.services.mapper.old;
 
 import at.fhtw.swen3.persistence.entity.HopArrivalEntity;
 import at.fhtw.swen3.services.dto.HopArrival;
+import at.fhtw.swen3.services.mapper.AbstractMapper;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,10 +19,9 @@ public class OldHopArrivalMapper extends AbstractMapper<HopArrival, HopArrivalEn
 
     @Override
     public HopArrival mapToSource(HopArrivalEntity object) {
-        return HopArrival.builder()
+        return new HopArrival()
                 .code(object.getCode())
                 .dateTime(object.getDateTime())
-                .description(object.getDescription())
-                .build();
+                .description(object.getDescription());
     }
 }

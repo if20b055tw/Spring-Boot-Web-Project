@@ -1,11 +1,19 @@
 package at.fhtw.swen3.persistence.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-public class TruckEntity {
+import javax.persistence.*;
+
+@Entity
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class TruckEntity extends HopEntity {
     @Column
     private String regionGeoJson;
 

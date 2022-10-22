@@ -1,11 +1,13 @@
 package at.fhtw.swen3;
 
 import at.fhtw.swen3.persistence.entity.ErrorEntity;
+import at.fhtw.swen3.persistence.entity.HopEntity;
 import at.fhtw.swen3.persistence.entity.ParcelEntity;
 import at.fhtw.swen3.persistence.entity.RecipientEntity;
 import at.fhtw.swen3.services.dto.*;
 import at.fhtw.swen3.services.dto.Error;
 import at.fhtw.swen3.services.mapper.ErrorMapper;
+import at.fhtw.swen3.services.mapper.HopMapper;
 import at.fhtw.swen3.services.mapper.ParcelMapper;
 import at.fhtw.swen3.services.mapper.RecipientMapper;
 import org.junit.jupiter.api.Test;
@@ -37,6 +39,8 @@ public class ServiceTest {
     private ErrorMapper errorMapper = Mappers.getMapper(ErrorMapper.class);
     private ParcelMapper parcelMapper = Mappers.getMapper(ParcelMapper.class);
     private RecipientMapper recipientMapper = Mappers.getMapper(RecipientMapper.class);
+
+    private HopMapper hopMapper = Mappers.getMapper(HopMapper.class);
 
     @Test
     void recipientTest() {
@@ -92,6 +96,22 @@ public class ServiceTest {
 
         TrackingInformation ti = new TrackingInformation();
         ti.setState(TrackingInformation.StateEnum.DELIVERED);*/
+
+
+
+    }
+
+    @Test
+    void hopTest() {
+
+        HopEntity entity = new HopEntity();
+        entity.setDescription("Some desc");
+        entity.setCode("CODE");
+
+        Hop dto = HopMapper.INSTANCE.mapToSource(entity);
+        System.out.println("HOP TEST");
+        System.out.println(dto.getDescription());
+        System.out.println(dto.getCode());
 
 
 

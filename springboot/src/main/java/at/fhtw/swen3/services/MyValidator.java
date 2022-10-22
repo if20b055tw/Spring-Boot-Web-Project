@@ -8,21 +8,23 @@ import java.util.Set;
 @Slf4j
 public class MyValidator {
     static ValidatorFactory getValidatorFactory() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        return factory;
+        return Validation.buildDefaultValidatorFactory();
     }
 
     Validator getValidator() {
         return getValidatorFactory().getValidator();
     }
 
-    <T> void validate(T o) {
+    <T> Set<ConstraintViolation<T>> validate(T o) {
+        return getValidator().validate(o);
+
+        /*
         Validator validator = getValidator();
         Set<ConstraintViolation<T>> violations = validator.validate(o);
         violations.forEach(v -> log.error(v.getMessage()));
         if (!violations.isEmpty()) {
             throw new ConstraintViolationException(violations);
-        }
+        }*/
     }
 
 }

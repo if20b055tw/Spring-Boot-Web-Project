@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.OffsetDateTime;
 
@@ -22,10 +23,10 @@ public class HopArrivalDal {
 
     @ManyToOne
     @JoinColumn(name="fk_parcel")
+    @NotNull
     private ParcelDal parcel;
 
     @Column
-    @Pattern(regexp = "[A-Za-z0-9- ]+")
     private String description;
 
     @Column

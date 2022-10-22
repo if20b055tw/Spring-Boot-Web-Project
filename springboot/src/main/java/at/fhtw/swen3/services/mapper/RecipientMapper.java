@@ -3,9 +3,9 @@ package at.fhtw.swen3.services.mapper;
 import at.fhtw.swen3.persistence.entity.RecipientEntity;
 import at.fhtw.swen3.services.dto.Recipient;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface RecipientMapper {
-    Recipient mapToRecipient(RecipientEntity recipientEntity);
-    RecipientEntity mapToRecipientEntity(Recipient recipient);
+public abstract class RecipientMapper extends AbstractMapper<Recipient, RecipientMapper> {
+    public static RecipientMapper INSTANCE = Mappers.getMapper(RecipientMapper.class);
 }

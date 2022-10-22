@@ -4,9 +4,9 @@ import at.fhtw.swen3.persistence.entity.WarehouseEntity;
 import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
 import at.fhtw.swen3.services.dto.WarehouseNextHops;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface WarehouseNextHopsMapper {
-    WarehouseNextHops mapToWarehouseNextHops(WarehouseNextHopsEntity warehouseNextHopsEntity);
-    WarehouseNextHopsEntity mapToWarehouseNextHopsEntity(WarehouseNextHops warehouseNextHops);
+public abstract class WarehouseNextHopsMapper extends AbstractMapper<WarehouseNextHops, WarehouseNextHopsEntity> {
+    public static WarehouseNextHopsMapper INSTANCE = Mappers.getMapper(WarehouseNextHopsMapper.class);
 }

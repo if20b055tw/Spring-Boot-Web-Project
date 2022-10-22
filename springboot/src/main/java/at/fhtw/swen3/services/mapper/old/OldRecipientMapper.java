@@ -1,11 +1,12 @@
-package at.fhtw.swen3.services.mapper;
+package at.fhtw.swen3.services.mapper.old;
 
 import at.fhtw.swen3.persistence.entity.RecipientEntity;
 import at.fhtw.swen3.services.dto.Recipient;
+import at.fhtw.swen3.services.mapper.AbstractMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OldRecipientMapper extends AbstractMapper<Recipient, RecipientEntity>{
+public class OldRecipientMapper extends AbstractMapper<Recipient, RecipientEntity> {
     @Override
     public RecipientEntity mapToTarget(Recipient object) {
         return RecipientEntity.builder()
@@ -19,12 +20,11 @@ public class OldRecipientMapper extends AbstractMapper<Recipient, RecipientEntit
 
     @Override
     public Recipient mapToSource(RecipientEntity object) {
-        return Recipient.builder()
+        return new Recipient()
                 .city(object.getCity())
                 .country(object.getCountry())
                 .name(object.getName())
                 .postalCode(object.getPostalCode())
-                .street(object.getStreet())
-                .build();
+                .street(object.getStreet());
     }
 }

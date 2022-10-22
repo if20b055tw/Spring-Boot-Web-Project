@@ -35,10 +35,12 @@ public class ParcelDal {
     private TrackingInformation.StateEnum state;
 
     @OneToMany(mappedBy = "parcel")
-    private List<HopArrivalDal> visitedHops = new ArrayList<>();
+    @NotNull
+    private List<@NotNull HopArrivalDal> visitedHops = new ArrayList<>();
 
     @OneToMany(mappedBy = "parcel")
-    private List<HopArrivalDal> futureHops = new ArrayList<>();
+    @NotNull
+    private List<@NotNull HopArrivalDal> futureHops = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")

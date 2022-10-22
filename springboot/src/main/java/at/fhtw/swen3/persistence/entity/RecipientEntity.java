@@ -13,11 +13,11 @@ import javax.validation.constraints.Pattern;
 @Data
 public class RecipientEntity {
     @Column
-    @Pattern(regexp = "[A-Z][A-Za-z0-9- ]*")
+    @Pattern(regexp = "[A-ZÄÖÜ][A-ZÄÖÜa-zäöüß0-9-/ ]*")
     private String name;
 
     @Column
-    @Pattern(regexp = "[A-Za-z]+ [0-9]+[0-9a-z/]*")
+    @Pattern(regexp = "[A-ZÄÖÜa-zäöüß]+ [1-9][0-9]*[0-9a-zA-Z/]*")
     private String street;
 
     @Column
@@ -25,11 +25,11 @@ public class RecipientEntity {
     private String postalCode;
 
     @Column
-    @Pattern(regexp = "[A-Z][A-Za-z0-9- ]*")
+    @Pattern(regexp = "[A-ZÄÖÜ][A-ZÄÖÜa-zäöüß0-9-/ ]*")
     private String city;
 
     @Column
-    @Pattern(regexp = "[A-Za-zÖöÄäÜü]+")
+    @Pattern(regexp = "[A-ZÄÖÜa-zäöüß]+")
     private String country;
 
     @Id
