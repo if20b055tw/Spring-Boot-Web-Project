@@ -35,4 +35,14 @@ public class WarehouseEntity extends HopEntity {
     @Column
     private Long id;
 
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        WarehouseEntity warehouseEntity = (WarehouseEntity) o;
+        return level.equals(warehouseEntity.level) &&
+                nextHops.equals(warehouseEntity.nextHops);
+    }*/
+
 }

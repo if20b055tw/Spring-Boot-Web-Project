@@ -25,4 +25,14 @@ public class TruckEntity extends HopEntity {
     @Column
     private Long id;
 
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass() || !super.equals(o)) {
+            return false;
+        }
+        TruckEntity truckEntity = (TruckEntity) o;
+        return regionGeoJson.equals(truckEntity.regionGeoJson) &&
+                numberPlate.equals(truckEntity.numberPlate);
+    }*/
+
 }

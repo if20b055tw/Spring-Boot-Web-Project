@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface ParcelRepository extends JpaRepository<ParcelDal, Long> {
-
+    void reportParcelDelivery(String trackingId);
 }

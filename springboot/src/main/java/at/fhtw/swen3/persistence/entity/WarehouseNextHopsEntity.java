@@ -31,4 +31,14 @@ public class WarehouseNextHopsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column
     private Long id;
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        WarehouseNextHopsEntity warehouseNextHopsEntity = (WarehouseNextHopsEntity) o;
+        return traveltimeMins.equals(warehouseNextHopsEntity.traveltimeMins) &&
+                hop.equals(warehouseNextHopsEntity.hop);
+    }*/
 }

@@ -1,5 +1,6 @@
 package at.fhtw.swen3.model.entities;
 
+import com.vividsolutions.jts.geom.Point;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,11 +14,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 public class GeoCoordinateDal {
-    @Column
+    /*@Column
     private Double lat;
 
     @Column
-    private Double lon;
+    private Double lon;*/
+
+    @Column
+    private Point location;
 
     @Column
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")

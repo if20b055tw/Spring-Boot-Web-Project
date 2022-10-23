@@ -22,4 +22,14 @@ public class GeoCoordinateEntity {
     @Column
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     private Long id;
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GeoCoordinateEntity geoCoordinateEntity = (GeoCoordinateEntity) o;
+        return lat.equals(geoCoordinateEntity.lat) &&
+                lon.equals(geoCoordinateEntity.lon);
+    }*/
 }

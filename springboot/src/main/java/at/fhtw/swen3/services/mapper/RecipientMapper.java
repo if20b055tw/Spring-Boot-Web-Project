@@ -6,6 +6,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public abstract class RecipientMapper extends AbstractMapper<Recipient, RecipientMapper> {
+public abstract class RecipientMapper extends AbstractMapper<Recipient, RecipientEntity> {
     public static RecipientMapper INSTANCE = Mappers.getMapper(RecipientMapper.class);
 }

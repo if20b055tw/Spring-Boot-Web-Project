@@ -48,7 +48,7 @@ public class ServiceTest {
         ErrorEntity entity = new ErrorEntity();
         entity.setErrorMessage("errmsg");
 
-        Error err = errorMapper.mapToError(entity);
+        Error err = errorMapper.mapToSource(entity);
         System.out.println(err.getErrorMessage());
 
     }
@@ -62,7 +62,7 @@ public class ServiceTest {
         entity.setStreet("Libanon 3");
         entity.setName("Recip");
 
-        Recipient pdto = recipientMapper.mapToRecipient(entity);
+        Recipient pdto = recipientMapper.mapToSource(entity);
         System.out.println(pdto.getStreet());
         System.out.println(pdto.getCity());
         System.out.println(pdto.getCountry());

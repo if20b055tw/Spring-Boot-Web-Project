@@ -34,4 +34,15 @@ public class HopArrivalEntity {
     @Column
     private Long id;
 
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        HopArrivalEntity hopArrivalEntity = (HopArrivalEntity) o;
+        return code.equals(hopArrivalEntity.code) &&
+                description.equals(hopArrivalEntity.description) &&
+                dateTime.equals(hopArrivalEntity.dateTime);
+    }*/
+
 }

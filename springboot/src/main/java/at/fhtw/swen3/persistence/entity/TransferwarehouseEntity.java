@@ -28,4 +28,15 @@ public class TransferwarehouseEntity extends HopEntity {
     @Column
     private Long id;
 
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass() || !super.equals(o)) {
+            return false;
+        }
+        TransferwarehouseEntity transferwarehouseEntity = (TransferwarehouseEntity) o;
+        return regionGeoJson.equals(transferwarehouseEntity.regionGeoJson) &&
+                logisticsPartner.equals(transferwarehouseEntity.logisticsPartner) &&
+                logisticsPartnerUrl.equals(transferwarehouseEntity.logisticsPartnerUrl);
+    }*/
+
 }

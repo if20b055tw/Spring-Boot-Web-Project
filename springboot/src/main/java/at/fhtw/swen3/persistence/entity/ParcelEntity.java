@@ -46,4 +46,18 @@ public class ParcelEntity {
     @Column
     private String trackingId;
 
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ParcelEntity parcelEntity = (ParcelEntity) o;
+        return weight.equals(parcelEntity.weight) &&
+                recipient.equals(parcelEntity.recipient) &&
+                sender.equals(parcelEntity.sender) &&
+                state.equals(parcelEntity.state) &&
+                visitedHops.equals(parcelEntity.visitedHops) &&
+                futureHops.equals(parcelEntity.futureHops);
+    }*/
+
 }

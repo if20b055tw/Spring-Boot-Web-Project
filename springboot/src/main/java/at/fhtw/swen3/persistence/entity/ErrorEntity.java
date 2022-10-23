@@ -19,4 +19,13 @@ public class ErrorEntity {
     @Column
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     private Long id;
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ErrorEntity errorEntity = (ErrorEntity) o;
+        return errorMessage.equals(errorEntity.errorMessage);
+    }*/
 }
