@@ -1,6 +1,6 @@
 package at.fhtw.swen3.services.impl;
 
-import at.fhtw.swen3.services.MyValidator;
+import at.fhtw.swen3.services.validation.MyValidator;
 import at.fhtw.swen3.services.ParcelService;
 import at.fhtw.swen3.services.dto.Recipient;
 import at.fhtw.swen3.services.mapper.old.OldParcelMapper;

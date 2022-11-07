@@ -1,8 +1,8 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
-import at.fhtw.swen3.persistence.entity.HopEntity;
-import at.fhtw.swen3.persistence.entity.WarehouseNextHopsEntity;
+import at.fhtw.swen3.persistence.entity.old.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entity.old.HopEntity;
+import at.fhtw.swen3.persistence.entity.old.WarehouseNextHopsEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
 import at.fhtw.swen3.services.dto.Hop;
 import at.fhtw.swen3.services.dto.WarehouseNextHops;

@@ -1,19 +1,17 @@
-package at.fhtw.swen3.model.entities;
+package at.fhtw.swen3.persistence.entity.old;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+
 
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class RecipientDal {
+public class RecipientEntity {
     @Column
     @Pattern(regexp = "[A-ZÄÖÜ][A-ZÄÖÜa-zäöüß0-9-/ ]*")
     private String name;
@@ -38,4 +36,17 @@ public class RecipientDal {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column
     private Long id;
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RecipientEntity recipientEntity = (RecipientEntity) o;
+        return name.equals(recipientEntity.name) &&
+                street.equals(recipientEntity.street) &&
+                postalCode.equals(recipientEntity.postalCode) &&
+                city.equals(recipientEntity.city) &&
+                country.equals(recipientEntity.country);
+    }*/
 }

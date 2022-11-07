@@ -1,6 +1,9 @@
 package at.fhtw.swen3.persistence.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,19 +33,8 @@ public class HopArrivalEntity {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private OffsetDateTime dateTime;
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column
     private Long id;
-
-    /*@Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        HopArrivalEntity hopArrivalEntity = (HopArrivalEntity) o;
-        return code.equals(hopArrivalEntity.code) &&
-                description.equals(hopArrivalEntity.description) &&
-                dateTime.equals(hopArrivalEntity.dateTime);
-    }*/
-
 }

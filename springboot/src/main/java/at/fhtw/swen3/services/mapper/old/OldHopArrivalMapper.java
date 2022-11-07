@@ -1,6 +1,6 @@
 package at.fhtw.swen3.services.mapper.old;
 
-import at.fhtw.swen3.persistence.entity.HopArrivalEntity;
+import at.fhtw.swen3.persistence.entity.old.HopArrivalEntity;
 import at.fhtw.swen3.services.dto.HopArrival;
 import at.fhtw.swen3.services.mapper.AbstractMapper;
 import org.springframework.stereotype.Component;
