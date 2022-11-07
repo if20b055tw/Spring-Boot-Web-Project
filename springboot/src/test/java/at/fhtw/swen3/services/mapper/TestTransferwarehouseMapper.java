@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
-import at.fhtw.swen3.persistence.entity.TransferwarehouseEntity;
+import at.fhtw.swen3.persistence.entity.old.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entity.old.TransferwarehouseEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
 import at.fhtw.swen3.services.dto.Transferwarehouse;
 import org.springframework.boot.test.context.SpringBootTest;

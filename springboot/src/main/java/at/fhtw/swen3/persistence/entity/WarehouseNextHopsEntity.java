@@ -25,20 +25,10 @@ public class WarehouseNextHopsEntity {
     @ManyToOne
     @JoinColumn(name = "fk_warehouse")
     @NotNull
-    private WarehouseEntity warehouseEntity;
+    private WarehouseEntity warehouseDal;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column
     private Long id;
-
-    /*@Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        WarehouseNextHopsEntity warehouseNextHopsEntity = (WarehouseNextHopsEntity) o;
-        return traveltimeMins.equals(warehouseNextHopsEntity.traveltimeMins) &&
-                hop.equals(warehouseNextHopsEntity.hop);
-    }*/
 }

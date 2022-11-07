@@ -1,12 +1,10 @@
 package at.fhtw.swen3.services.impl;
 
 
-import at.fhtw.swen3.model.repositories.ParcelRepository;
-import at.fhtw.swen3.services.ParcelApi;
+import at.fhtw.swen3.controller.rest.ParcelApi;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.dto.TrackingInformation;
-import at.fhtw.swen3.services.mapper.ParcelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

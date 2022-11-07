@@ -1,6 +1,6 @@
 package at.fhtw.swen3.services.mapper.old;
 
-import at.fhtw.swen3.persistence.entity.RecipientEntity;
+import at.fhtw.swen3.persistence.entity.old.RecipientEntity;
 import at.fhtw.swen3.services.dto.Recipient;
 import at.fhtw.swen3.services.mapper.AbstractMapper;
 import org.springframework.stereotype.Component;

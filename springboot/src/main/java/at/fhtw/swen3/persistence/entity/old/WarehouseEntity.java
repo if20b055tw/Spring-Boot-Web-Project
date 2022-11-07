@@ -1,7 +1,6 @@
-package at.fhtw.swen3.model.entities;
+package at.fhtw.swen3.persistence.entity.old;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -17,14 +16,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class WarehouseDal extends HopDal {
+public class WarehouseEntity extends HopEntity {
     @Column
     private Integer level;
 
     @Column
     @OneToMany
     @NotNull
-    private List<@NotNull WarehouseNextHopsDal> nextHops = new ArrayList<>();
+    private List<@NotNull WarehouseNextHopsEntity> nextHops = new ArrayList<>();
 
     @Column
     @Pattern(regexp = "[A-ZÄÖÜa-zäöüß0-9-/ ]*")
@@ -34,5 +33,15 @@ public class WarehouseDal extends HopDal {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column
     private Long id;
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        WarehouseEntity warehouseEntity = (WarehouseEntity) o;
+        return level.equals(warehouseEntity.level) &&
+                nextHops.equals(warehouseEntity.nextHops);
+    }*/
 
 }

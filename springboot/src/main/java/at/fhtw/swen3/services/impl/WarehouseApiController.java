@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.impl;
 
 
-import at.fhtw.swen3.services.WarehouseApi;
+import at.fhtw.swen3.controller.rest.WarehouseApi;
 import at.fhtw.swen3.services.dto.Hop;
 import at.fhtw.swen3.services.dto.Warehouse;
 import org.springframework.beans.factory.annotation.Autowired;

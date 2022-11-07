@@ -1,9 +1,9 @@
 package at.fhtw.swen3;
 
-import at.fhtw.swen3.persistence.entity.ErrorEntity;
-import at.fhtw.swen3.persistence.entity.HopEntity;
-import at.fhtw.swen3.persistence.entity.ParcelEntity;
-import at.fhtw.swen3.persistence.entity.RecipientEntity;
+import at.fhtw.swen3.persistence.entity.old.ErrorEntity;
+import at.fhtw.swen3.persistence.entity.old.HopEntity;
+import at.fhtw.swen3.persistence.entity.old.ParcelEntity;
+import at.fhtw.swen3.persistence.entity.old.RecipientEntity;
 import at.fhtw.swen3.services.dto.*;
 import at.fhtw.swen3.services.dto.Error;
 import at.fhtw.swen3.services.mapper.ErrorMapper;
