@@ -1,7 +1,10 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.old.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.Point;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,11 +18,11 @@ public class TestGeoCoordinateMapper extends GenericMapperTest<GeoCoordinate, Ge
 
     @Override
     public GeoCoordinate getSource() {
-        return new GeoCoordinate().lat(1.0).lon(2.0);
+        return new GeoCoordinate().lon(1.0).lat(2.0);
     }
 
     @Override
     public GeoCoordinateEntity getTarget() {
-        return GeoCoordinateEntity.builder().lat(1.0).lon(2.0).build();
+        return GeoCoordinateEntity.builder().location(new GeometryFactory().createPoint(new Coordinate(1.0, 2.0))).build();
     }
 }

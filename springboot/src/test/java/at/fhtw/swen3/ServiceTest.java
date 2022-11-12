@@ -1,15 +1,12 @@
 package at.fhtw.swen3;
 
-import at.fhtw.swen3.persistence.entity.old.ErrorEntity;
-import at.fhtw.swen3.persistence.entity.old.HopEntity;
-import at.fhtw.swen3.persistence.entity.old.ParcelEntity;
-import at.fhtw.swen3.persistence.entity.old.RecipientEntity;
+import at.fhtw.swen3.persistence.entity.ErrorEntity;
+import at.fhtw.swen3.persistence.entity.HopEntity;
+import at.fhtw.swen3.persistence.entity.ParcelEntity;
+import at.fhtw.swen3.persistence.entity.RecipientEntity;
 import at.fhtw.swen3.services.dto.*;
 import at.fhtw.swen3.services.dto.Error;
-import at.fhtw.swen3.services.mapper.ErrorMapper;
-import at.fhtw.swen3.services.mapper.HopMapper;
-import at.fhtw.swen3.services.mapper.ParcelMapper;
-import at.fhtw.swen3.services.mapper.RecipientMapper;
+import at.fhtw.swen3.services.mapper.*;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,6 +35,7 @@ public class ServiceTest {
 
     private ErrorMapper errorMapper = Mappers.getMapper(ErrorMapper.class);
     private ParcelMapper parcelMapper = Mappers.getMapper(ParcelMapper.class);
+    //private NewParcelInfoMapper newParcelInfoMapper = Mappers.getMapper();
     private RecipientMapper recipientMapper = Mappers.getMapper(RecipientMapper.class);
 
     private HopMapper hopMapper = Mappers.getMapper(HopMapper.class);
@@ -72,7 +70,7 @@ public class ServiceTest {
 
     }
 
-    @Test
+    /*@Test
     void recipientTest3() {
 
         ParcelEntity entity = new ParcelEntity();
@@ -80,7 +78,7 @@ public class ServiceTest {
         entity.setWeight(1.0f);
         entity.setRecipient(RecipientEntity.builder().name("Recip").street("Libanon 3").country("Gasse").city("Hochhausen").build());
 
-        Parcel pdto = parcelMapper.mapToParcel(entity);
+        Parcel pdto = parcelMapper.mapToSource(entity);
         NewParcelInfo npi = parcelMapper.mapToNewParcelInfo(entity);
         TrackingInformation ti = parcelMapper.mapToTrackingInformation(entity);
         System.out.println(pdto.getWeight());
@@ -95,12 +93,12 @@ public class ServiceTest {
         npi.setTrackingId("s");
 
         TrackingInformation ti = new TrackingInformation();
-        ti.setState(TrackingInformation.StateEnum.DELIVERED);*/
+        ti.setState(TrackingInformation.StateEnum.DELIVERED);
 
 
 
     }
-
+*/
     @Test
     void hopTest() {
 

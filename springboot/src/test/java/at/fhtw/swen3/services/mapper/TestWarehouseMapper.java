@@ -1,9 +1,11 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.old.GeoCoordinateEntity;
-import at.fhtw.swen3.persistence.entity.old.WarehouseEntity;
+import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entity.WarehouseEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
 import at.fhtw.swen3.services.dto.Warehouse;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
@@ -36,8 +38,7 @@ public class TestWarehouseMapper extends GenericMapperTest<Warehouse, WarehouseE
                 .processingDelayMins(12)
                 .locationCoordinates(
                         GeoCoordinateEntity.builder()
-                                .lon(1.0)
-                                .lat(2.0)
+                                .location(new GeometryFactory().createPoint(new Coordinate(1.0, 2.0)))
                                 .build())
                 .locationName("lname")
                 .nextHops(new ArrayList<>())
