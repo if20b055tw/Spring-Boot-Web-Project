@@ -1,46 +1,45 @@
 package at.fhtw.swen3.services.impl;
 
+import at.fhtw.swen3.persistence.entity.ParcelEntity;
+import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.validation.MyValidator;
-import at.fhtw.swen3.services.ParcelService;
-import at.fhtw.swen3.services.dto.Recipient;
-import at.fhtw.swen3.services.mapper.old.OldParcelMapper;
+import at.fhtw.swen3.utils.ActionResult;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import javax.validation.*;
-import java.util.Arrays;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @Slf4j
 public class ParcelServiceImpl implements ParcelService {
 
-    private final OldParcelMapper parcelMapStruct;
-
     private final MyValidator myValidator;
 
 
-    public void savePostalCode(@Valid Recipient recipient) {
-
-
-
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-
-        Set<ConstraintViolation<Recipient>> violations = validator.validate(recipient);
-        for (ConstraintViolation<Recipient> violation : violations) {
-            if (recipient.getCountry().equals("Österreich") || recipient.getCountry().equals("Austria")) {
-                log.error(violation.getMessage());
-            }
-
-            if (!Arrays.asList("postalCode", "street", "name", "city").contains(String.valueOf(violation.getPropertyPath()))) {
-                log.error(violation.getMessage());
-            }
-        }
+    @Override
+    public ActionResult reportParcelDelivery(String trackingId) {
+        log.info("Report parcel delivery for parcel with tracking ID: '" + trackingId + "'");
+        return new ActionResult(ActionResult.Result.NO_ERROR);
     }
 
     @Override
-    public void submitNewParcel() {
+    public void reportParcelHop(String trackingId, String code) {
+        log.info("Report parcel hop for parcel with tracking ID: '" + trackingId + "' to hop with code '" + code + "'");
+    }
 
+    @Override
+    public Parcel submitParcel(Parcel parcel) {
+        log.info("Submit Parcel");
+        return null;
+    }
+
+    @Override
+    public Parcel trackParcel(String trackingId) {
+        log.info("Track parcel with tracking ID: '" + trackingId + "'");
+        return null;
+    }
+
+    @Override
+    public Parcel transitionParcel(String trackingId, Parcel parcel) {
+        log.info("Transition parcel with tracking ID: '" + trackingId + "'");
+        return null;
     }
 }

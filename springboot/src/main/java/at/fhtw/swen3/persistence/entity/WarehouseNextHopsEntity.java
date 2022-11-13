@@ -17,7 +17,6 @@ public class WarehouseNextHopsEntity {
     @Column
     private Integer traveltimeMins;
 
-    @Column
     @OneToOne
     @NotNull
     private HopEntity hop;

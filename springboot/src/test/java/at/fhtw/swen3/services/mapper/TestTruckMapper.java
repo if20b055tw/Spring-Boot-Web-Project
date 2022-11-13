@@ -1,9 +1,11 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.old.GeoCoordinateEntity;
-import at.fhtw.swen3.persistence.entity.old.TruckEntity;
+import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entity.TruckEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
 import at.fhtw.swen3.services.dto.Truck;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
@@ -35,8 +37,7 @@ public class TestTruckMapper extends GenericMapperTest<Truck, TruckEntity> {
                 .processingDelayMins(12)
                 .locationCoordinates(
                         GeoCoordinateEntity.builder()
-                                .lon(1.0)
-                                .lat(2.0)
+                                .location(new GeometryFactory().createPoint(new Coordinate(1.0, 2.0)))
                                 .build())
                 .locationName("lname")
                 .regionGeoJson("JSON")

@@ -1,7 +1,0 @@
-package at.fhtw.swen3.services;
-
-public interface ParcelService {
-    void submitNewParcel();
-
-
-}
