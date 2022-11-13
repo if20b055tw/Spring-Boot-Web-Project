@@ -22,7 +22,7 @@ public class HopArrivalEntity {
     private String code;
 
     @ManyToOne
-    @JoinColumn(name="fk_parcel")
+    @JoinColumn(name="parcel_id")
     @NotNull
     private ParcelEntity parcel;
 

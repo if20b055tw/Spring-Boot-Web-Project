@@ -1,4 +1,4 @@
-package at.fhtw.swen3.services.impl;
+package at.fhtw.swen3.controller.rest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;

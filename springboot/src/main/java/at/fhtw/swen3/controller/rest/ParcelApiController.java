@@ -1,27 +1,17 @@
-package at.fhtw.swen3.services.impl;
+package at.fhtw.swen3.controller.rest;
 
 
-import at.fhtw.swen3.controller.rest.ApiUtil;
-import at.fhtw.swen3.controller.rest.ParcelApi;
-import at.fhtw.swen3.persistence.entity.ParcelEntity;
-import at.fhtw.swen3.persistence.repositories.ParcelRepository;
-import at.fhtw.swen3.services.ParcelService;
+import at.fhtw.swen3.services.impl.ParcelService;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.dto.TrackingInformation;
 import at.fhtw.swen3.services.mapper.NewParcelInfoMapper;
 import at.fhtw.swen3.services.mapper.ParcelMapper;
 import at.fhtw.swen3.services.mapper.TrackingInformationMapper;
-import at.fhtw.swen3.services.validation.MyValidator;
-import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.util.MultiValueMapAdapter;
 import org.springframework.web.context.request.NativeWebRequest;
 
 import java.util.*;
@@ -29,6 +19,7 @@ import javax.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-09-20T11:34:14.505164Z[Etc/UTC]")
 @Controller
+@Slf4j
 public class ParcelApiController implements ParcelApi {
 
     private final NativeWebRequest request;
@@ -55,29 +46,41 @@ public class ParcelApiController implements ParcelApi {
 
     @Override
     public ResponseEntity<Void> reportParcelDelivery(String trackingId) {
-        //parcelRepository.reportParcelDelivery(trackingId);
+        log.info("Calling: reportParcelDeilivery");
+        /*ActionResult actionResult = parcelService.reportParcelDelivery(trackingId);
+        switch (actionResult) {
+            case ERROR:
+                return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+            case MISSING:
+                return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+            case NO_ERROR:
+                return new ResponseEntity<Void>(HttpStatus.OK);
+        }*/
 
         return ParcelApi.super.reportParcelDelivery(trackingId);
     }
 
     @Override
     public ResponseEntity<Void> reportParcelHop(String trackingId, String code) {
+        log.info("Calling: reportParcelHop");
         return ParcelApi.super.reportParcelHop(trackingId, code);
     }
 
     @Override
     public ResponseEntity<NewParcelInfo> submitParcel(Parcel parcel) {
-        ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
+        log.info("Calling: submitParcel");
+        /*ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
         ParcelEntity newParcelInfoEntity = parcelService.submitParcel(parcelEntity);
         NewParcelInfo newParcelInfo = newParcelInfoMapper.mapToSource(newParcelInfoEntity);
 
-        //System.out.println(parcelEntity.getWeight());
+        //System.out.println(parcelEntity.getWeight());*/
 
         return ParcelApi.super.submitParcel(parcel);
     }
 
     @Override
     public ResponseEntity<TrackingInformation> trackParcel(String trackingId) {
+        log.info("Calling: trackParcel");
         /*Optional<TrackingInformation.StateEnum> state = parcelRepository.trackParcel(trackingId);
         if (state.isPresent()) {
 
@@ -102,18 +105,19 @@ public class ParcelApiController implements ParcelApi {
         //return new ResponseEntity<>("{\"HAHAHAAHAHAH\": \"XD\"}", lmvm, HttpStatus.ACCEPTED);
         //return new ResponseEntity<>(HttpStatus.ACCEPTED);
 
-        ParcelEntity trackingInformationEntity = parcelService.trackParcel(trackingId);
-        TrackingInformation trackingInformation = trackingInformationMapper.mapToSource(trackingInformationEntity);
+        /*ParcelEntity trackingInformationEntity = parcelService.trackParcel(trackingId);
+        TrackingInformation trackingInformation = trackingInformationMapper.mapToSource(trackingInformationEntity);*/
 
         return ParcelApi.super.trackParcel(trackingId);
     }
 
     @Override
     public ResponseEntity<NewParcelInfo> transitionParcel(String trackingId, Parcel parcel) {
+        log.info("Calling: transitionParcel");
         //ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
-        ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
+        /*ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
         ParcelEntity newParcelInfoEntity = parcelService.transitionParcel(trackingId, parcelEntity);
-        NewParcelInfo newParcelInfo = newParcelInfoMapper.mapToSource(newParcelInfoEntity);
+        NewParcelInfo newParcelInfo = newParcelInfoMapper.mapToSource(newParcelInfoEntity);*/
 
         return ParcelApi.super.transitionParcel(trackingId, parcel);
     }
