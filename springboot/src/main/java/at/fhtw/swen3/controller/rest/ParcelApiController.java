@@ -1,6 +1,7 @@
 package at.fhtw.swen3.controller.rest;
 
 
+import at.fhtw.swen3.persistence.entity.ParcelEntity;
 import at.fhtw.swen3.services.impl.ParcelService;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
@@ -8,6 +9,7 @@ import at.fhtw.swen3.services.dto.TrackingInformation;
 import at.fhtw.swen3.services.mapper.NewParcelInfoMapper;
 import at.fhtw.swen3.services.mapper.ParcelMapper;
 import at.fhtw.swen3.services.mapper.TrackingInformationMapper;
+import at.fhtw.swen3.utils.ActionResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,15 +49,15 @@ public class ParcelApiController implements ParcelApi {
     @Override
     public ResponseEntity<Void> reportParcelDelivery(String trackingId) {
         log.info("Calling: reportParcelDeilivery");
-        /*ActionResult actionResult = parcelService.reportParcelDelivery(trackingId);
-        switch (actionResult) {
-            case ERROR:
-                return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-            case MISSING:
-                return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-            case NO_ERROR:
-                return new ResponseEntity<Void>(HttpStatus.OK);
-        }*/
+        ActionResult actionResult = parcelService.reportParcelDelivery(trackingId);
+//        switch (actionResult) {
+//            case ERROR:
+//                return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+//            case MISSING:
+//                return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+//            case NO_ERROR:
+//                return new ResponseEntity<Void>(HttpStatus.OK);
+//        }
 
         return ParcelApi.super.reportParcelDelivery(trackingId);
     }
@@ -63,17 +65,19 @@ public class ParcelApiController implements ParcelApi {
     @Override
     public ResponseEntity<Void> reportParcelHop(String trackingId, String code) {
         log.info("Calling: reportParcelHop");
+        parcelService.reportParcelHop(trackingId, code);
+
         return ParcelApi.super.reportParcelHop(trackingId, code);
     }
 
     @Override
     public ResponseEntity<NewParcelInfo> submitParcel(Parcel parcel) {
         log.info("Calling: submitParcel");
-        /*ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
+        ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
         ParcelEntity newParcelInfoEntity = parcelService.submitParcel(parcelEntity);
         NewParcelInfo newParcelInfo = newParcelInfoMapper.mapToSource(newParcelInfoEntity);
 
-        //System.out.println(parcelEntity.getWeight());*/
+        //System.out.println(parcelEntity.getWeight());
 
         return ParcelApi.super.submitParcel(parcel);
     }
@@ -105,8 +109,8 @@ public class ParcelApiController implements ParcelApi {
         //return new ResponseEntity<>("{\"HAHAHAAHAHAH\": \"XD\"}", lmvm, HttpStatus.ACCEPTED);
         //return new ResponseEntity<>(HttpStatus.ACCEPTED);
 
-        /*ParcelEntity trackingInformationEntity = parcelService.trackParcel(trackingId);
-        TrackingInformation trackingInformation = trackingInformationMapper.mapToSource(trackingInformationEntity);*/
+        ParcelEntity trackingInformationEntity = parcelService.trackParcel(trackingId);
+        TrackingInformation trackingInformation = trackingInformationMapper.mapToSource(trackingInformationEntity);
 
         return ParcelApi.super.trackParcel(trackingId);
     }
@@ -115,9 +119,9 @@ public class ParcelApiController implements ParcelApi {
     public ResponseEntity<NewParcelInfo> transitionParcel(String trackingId, Parcel parcel) {
         log.info("Calling: transitionParcel");
         //ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
-        /*ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
+        ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
         ParcelEntity newParcelInfoEntity = parcelService.transitionParcel(trackingId, parcelEntity);
-        NewParcelInfo newParcelInfo = newParcelInfoMapper.mapToSource(newParcelInfoEntity);*/
+        NewParcelInfo newParcelInfo = newParcelInfoMapper.mapToSource(newParcelInfoEntity);
 
         return ParcelApi.super.transitionParcel(trackingId, parcel);
     }

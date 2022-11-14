@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 public interface ParcelService {
     ActionResult reportParcelDelivery(String trackingId);
     void reportParcelHop(String trackingId, String code);
-    Parcel submitParcel(Parcel parcel);
-    Parcel trackParcel(String trackingId);
-    Parcel transitionParcel(String trackingId, Parcel parcel);
+    ParcelEntity submitParcel(ParcelEntity parcelEntity);
+    ParcelEntity trackParcel(String trackingId);
+    ParcelEntity transitionParcel(String trackingId, ParcelEntity parcelEntity);
 }

@@ -17,19 +17,19 @@ public class WarehouseServiceImpl implements WarehouseService {
     private final MyValidator myValidator;
 
     @Override
-    public Warehouse exportWarehouses() {
+    public WarehouseEntity exportWarehouses() {
         log.info("Calling: exportWarehouses()");
         return null;
     }
 
     @Override
-    public Pair<Hop, ActionResult> getWarehouse(String code) {
+    public Pair<HopEntity, ActionResult> getWarehouse(String code) {
         log.info("get the Warehouse with Code: " + code);
         return null;
     }
 
     @Override
-    public void importWarehouses(Warehouse warehouse) {
+    public void importWarehouses(WarehouseEntity warehouseEntity) {
         log.info("Calling: importWarehouses");
     }
 }

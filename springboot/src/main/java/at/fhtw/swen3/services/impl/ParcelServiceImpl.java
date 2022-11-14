@@ -26,19 +26,19 @@ public class ParcelServiceImpl implements ParcelService {
     }
 
     @Override
-    public Parcel submitParcel(Parcel parcel) {
+    public ParcelEntity submitParcel(ParcelEntity parcelEntity) {
         log.info("Submit Parcel");
         return null;
     }
 
     @Override
-    public Parcel trackParcel(String trackingId) {
+    public ParcelEntity trackParcel(String trackingId) {
         log.info("Track parcel with tracking ID: '" + trackingId + "'");
         return null;
     }
 
     @Override
-    public Parcel transitionParcel(String trackingId, Parcel parcel) {
+    public ParcelEntity transitionParcel(String trackingId, ParcelEntity parcelEntity) {
         log.info("Transition parcel with tracking ID: '" + trackingId + "'");
         return null;
     }

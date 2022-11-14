@@ -13,7 +13,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import java.util.Optional;
 
 public interface WarehouseService {
-    Warehouse exportWarehouses();
-    Pair<Hop, ActionResult> getWarehouse(String code);
-    void importWarehouses(Warehouse warehouse);
+    WarehouseEntity exportWarehouses();
+    Pair<HopEntity, ActionResult> getWarehouse(String code);
+    void importWarehouses(WarehouseEntity warehouseEntity);
 }
