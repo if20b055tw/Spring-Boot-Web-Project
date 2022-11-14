@@ -1,10 +1,14 @@
 package at.fhtw.swen3.controller.rest;
 
 
+import at.fhtw.swen3.persistence.entity.HopEntity;
+import at.fhtw.swen3.persistence.entity.WarehouseEntity;
 import at.fhtw.swen3.services.impl.WarehouseService;
 import at.fhtw.swen3.services.dto.Warehouse;
 import at.fhtw.swen3.services.mapper.HopMapper;
 import at.fhtw.swen3.services.mapper.WarehouseMapper;
+import at.fhtw.swen3.utils.ActionResult;
+import at.fhtw.swen3.utils.Pair;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,8 +47,8 @@ public class WarehouseApiController implements WarehouseApi {
     @Override
     public ResponseEntity<Warehouse> exportWarehouses() {
         log.info("Calling: exportWarehouses");
-        /*WarehouseEntity warehouseEntity = warehouseService.exportWarehouses();
-        Warehouse warehouse = warehouseMapper.mapToSource(warehouseEntity);*/
+        WarehouseEntity warehouseEntity = warehouseService.exportWarehouses();
+        Warehouse warehouse = warehouseMapper.mapToSource(warehouseEntity);
 
         return WarehouseApi.super.exportWarehouses();
     }
@@ -52,8 +56,8 @@ public class WarehouseApiController implements WarehouseApi {
     @Override
     public ResponseEntity getWarehouse(String code) {
         log.info("Calling: getWarehouse");
-        /*Pair<HopEntity, ActionResult> hopEntity = warehouseService.getWarehouse(code);
-        switch (hopEntity.getSecond().getResult()) {
+        Pair<HopEntity, ActionResult> hopEntity = warehouseService.getWarehouse(code);
+        /*switch (hopEntity.getSecond().getResult()) {
             case NO_ERROR:
                 Hop hop = hopMapper.mapToSource(hopEntity.getFirst());
                 return new ResponseEntity<Hop>(hop, HttpStatus.OK);
@@ -69,8 +73,8 @@ public class WarehouseApiController implements WarehouseApi {
     @Override
     public ResponseEntity<Void> importWarehouses(Warehouse warehouse) {
         log.info("Calling: importWarehouse");
-        /*WarehouseEntity warehouseEntity = warehouseMapper.mapToTarget(warehouse);
-        warehouseService.importWarehouses(warehouseEntity);*/
+        WarehouseEntity warehouseEntity = warehouseMapper.mapToTarget(warehouse);
+        warehouseService.importWarehouses(warehouseEntity);
 
         return WarehouseApi.super.importWarehouses(warehouse);
     }
