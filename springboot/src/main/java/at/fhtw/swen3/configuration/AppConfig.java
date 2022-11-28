@@ -1,5 +1,10 @@
 package at.fhtw.swen3.configuration;
 
+import at.fhtw.swen3.controller.rest.ParcelApi;
+import at.fhtw.swen3.controller.rest.ParcelApiController;
+import at.fhtw.swen3.controller.rest.WarehouseApi;
+import at.fhtw.swen3.controller.rest.WarehouseApiController;
+import at.fhtw.swen3.persistence.repositories.HopArrivalRepository;
 import at.fhtw.swen3.services.impl.ParcelService;
 import at.fhtw.swen3.services.impl.WarehouseService;
 import at.fhtw.swen3.services.impl.ParcelServiceImpl;
@@ -10,6 +15,11 @@ import at.fhtw.swen3.utils.JPAUtil;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.repository.core.support.RepositoryFactorySupport;
+import org.springframework.data.repository.support.Repositories;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.context.request.NativeWebRequest;
+import org.springframework.web.context.request.ServletWebRequest;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -85,4 +95,10 @@ public class AppConfig {
     public MyValidator getMyValidator() {
         return new MyValidator();
     }
+
+    /*@Bean
+    public HopArrivalRepository getHopArrivalRepository() {
+        return Repository
+        return RepositoryFactorySupport rs = new RepositoryFactorySupport();
+    }*/
 }

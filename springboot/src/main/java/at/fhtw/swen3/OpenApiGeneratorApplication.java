@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication (exclude = {DataSourceAutoConfiguration.class })
-@ComponentScan(basePackages = {"at.fhtw.swen3", "at.fhtw.swen3.services" , "at.fhtw.swen3.configuration", "at.fhtw.swen3.controller.rest"})
+@SpringBootApplication /*(exclude = {DataSourceAutoConfiguration.class })*/
+@ComponentScan(basePackages = {"at.fhtw.swen3", "at.fhtw.swen3.services" , "at.fhtw.swen3.configuration", "at.fhtw.swen3.controller.rest", "at.fhtw.swen3.persistence.repositories"})
 @Slf4j
 public class OpenApiGeneratorApplication {
 

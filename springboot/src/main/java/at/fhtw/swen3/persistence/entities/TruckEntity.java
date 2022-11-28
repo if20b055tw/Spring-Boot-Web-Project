@@ -1,4 +1,4 @@
-package at.fhtw.swen3.persistence.entity;
+package at.fhtw.swen3.persistence.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,20 +7,17 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "truck")
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class TransferwarehouseEntity extends HopEntity {
+public class TruckEntity extends HopEntity {
     @Column
     private String regionGeoJson;
 
     @Column
-    private String logisticsPartner;
-
-    @Column
-    private String logisticsPartnerUrl;
+    private String numberPlate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")

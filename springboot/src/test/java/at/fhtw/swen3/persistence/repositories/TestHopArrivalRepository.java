@@ -1,21 +1,32 @@
 package at.fhtw.swen3.persistence.repositories;
 
-import at.fhtw.swen3.persistence.entity.HopArrivalEntity;
-import at.fhtw.swen3.persistence.entity.ParcelEntity;
-import at.fhtw.swen3.persistence.entity.RecipientEntity;
+import at.fhtw.swen3.persistence.entities.HopArrivalEntity;
+import at.fhtw.swen3.persistence.entities.ParcelEntity;
+import at.fhtw.swen3.persistence.entities.RecipientEntity;
+import at.fhtw.swen3.services.dto.Recipient;
 import at.fhtw.swen3.services.dto.TrackingInformation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Optional;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
+@TestPropertySource("/application.properties")
 public class TestHopArrivalRepository {
     @Autowired
-    private HopArrivalRepository repository;
+    private HopArrivalRepository hopArrivalRepository;
+    @Autowired
+    private ParcelRepository parcelRepository;
+    @Autowired
+    private RecipientRepository recipientRepository;
 
     private HopArrivalEntity getHopArrivalEntity() {
         return HopArrivalEntity.builder()
@@ -31,18 +42,18 @@ public class TestHopArrivalRepository {
                                         RecipientEntity.builder()
                                                 .city("City")
                                                 .country("Country")
-                                                .street("Street")
+                                                .street("Street 1")
                                                 .name("Name")
-                                                .postalCode("1345")
+                                                .postalCode("A-1345")
                                                 .build()
                                 )
                                 .recipient(
                                         RecipientEntity.builder()
                                                 .city("City")
                                                 .country("Country")
-                                                .street("Street")
+                                                .street("Street 1")
                                                 .name("Name")
-                                                .postalCode("1345")
+                                                .postalCode("A-1345")
                                                 .build()
                                 )
                                 .build()
@@ -51,17 +62,26 @@ public class TestHopArrivalRepository {
                 .dateTime(OffsetDateTime.parse("2022-10-01T19:20:21+01:00")).build();
     }
 
-    /*@Test
+    @Test
     public void testHopArrivalRepository() {
-        Assertions.assertEquals(0, repository.count());
+        Assertions.assertEquals(0, hopArrivalRepository.count());
 
-        repository.save(getHopArrivalEntity());
-        Assertions.assertEquals(1, repository.count());
+        HopArrivalEntity hopArrivalEntity = getHopArrivalEntity();
+        ParcelEntity parcelEntity = hopArrivalEntity.getParcel();
+        RecipientEntity recipient = parcelEntity.getRecipient();
+        RecipientEntity sender = parcelEntity.getSender();
 
-        HopArrivalEntity entity = repository.findByCode("AAAA0000");
-        Assertions.assertEquals(getHopArrivalEntity(), entity);
+        recipientRepository.save(recipient);
+        recipientRepository.save(sender);
+        parcelRepository.save(parcelEntity);
+        hopArrivalRepository.save(hopArrivalEntity);
+        Assertions.assertEquals(1, hopArrivalRepository.count());
 
-        repository.delete(getHopArrivalEntity());
-        Assertions.assertEquals(0, repository.count());
-    }*/
+        Optional<HopArrivalEntity> entity = hopArrivalRepository.findByCode("AAAA0000");
+        Assertions.assertTrue(entity.isPresent());
+        Assertions.assertEquals(hopArrivalEntity, entity.get());
+
+        hopArrivalRepository.delete(hopArrivalEntity);
+        Assertions.assertEquals(0, hopArrivalRepository.count());
+    }
 }

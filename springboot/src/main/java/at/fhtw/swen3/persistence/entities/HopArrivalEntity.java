@@ -1,9 +1,6 @@
-package at.fhtw.swen3.persistence.entity;
+package at.fhtw.swen3.persistence.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -11,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.OffsetDateTime;
 
-@Entity
+@Entity(name = "hop_arrival")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,4 +34,15 @@ public class HopArrivalEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Column
     private Long id;
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof HopArrivalEntity)) {
+            return false;
+        }
+        HopArrivalEntity o = (HopArrivalEntity) other;
+
+        return code.equals(o.code) &&
+                description.equals(o.description);
+    }
 }

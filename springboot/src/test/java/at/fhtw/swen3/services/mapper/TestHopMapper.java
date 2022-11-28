@@ -1,7 +1,7 @@
 package at.fhtw.swen3.services.mapper;
 
-import at.fhtw.swen3.persistence.entity.GeoCoordinateEntity;
-import at.fhtw.swen3.persistence.entity.HopEntity;
+import at.fhtw.swen3.persistence.entities.GeoCoordinateEntity;
+import at.fhtw.swen3.persistence.entities.HopEntity;
 import at.fhtw.swen3.services.dto.GeoCoordinate;
 import at.fhtw.swen3.services.dto.Hop;
 import com.vividsolutions.jts.geom.Coordinate;

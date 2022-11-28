@@ -1,6 +1,5 @@
 package at.fhtw.swen3.services.impl;
 
-import at.fhtw.swen3.persistence.entity.ParcelEntity;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.validation.MyValidator;
 import at.fhtw.swen3.utils.ActionResult;

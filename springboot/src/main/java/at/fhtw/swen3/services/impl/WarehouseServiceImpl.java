@@ -1,7 +1,5 @@
 package at.fhtw.swen3.services.impl;
 
-import at.fhtw.swen3.persistence.entity.HopEntity;
-import at.fhtw.swen3.persistence.entity.WarehouseEntity;
 import at.fhtw.swen3.services.dto.Hop;
 import at.fhtw.swen3.services.dto.Warehouse;
 import at.fhtw.swen3.services.validation.MyValidator;
