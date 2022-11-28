@@ -1,4 +1,4 @@
-package at.fhtw.swen3.persistence.entity;
+package at.fhtw.swen3.persistence.entities;
 
 import at.fhtw.swen3.services.dto.TrackingInformation;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "parcel")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -42,10 +42,13 @@ public class ParcelEntity {
     @NotNull
     private List<@NotNull HopArrivalEntity> futureHops = new ArrayList<>();
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     @Pattern(regexp = "^[A-Z0-9]{9}$")
     @Column
     private String trackingId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @Column
+    private Long id;
 
 }

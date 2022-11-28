@@ -1,4 +1,4 @@
-package at.fhtw.swen3.persistence.entity;
+package at.fhtw.swen3.persistence.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity
+@Entity(name  = "hop")
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,4 +36,19 @@ public class HopEntity {
     @Column
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
     private Long id;
+
+    @Override
+    public boolean equals(Object other) {
+        if (!(other instanceof HopEntity)) {
+            return false;
+        }
+        HopEntity o = (HopEntity) other;
+
+        return hopType.equals(o.hopType) &&
+                code.equals(o.code) &&
+                description.equals(o.description) &&
+                processingDelayMins.equals(o.processingDelayMins) &&
+                locationName.equals(o.locationName) &&
+                locationCoordinates.equals(o.locationCoordinates);
+    }
 }
