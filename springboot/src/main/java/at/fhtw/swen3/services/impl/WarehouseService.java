@@ -6,7 +6,7 @@ import at.fhtw.swen3.utils.ActionResult;
 import at.fhtw.swen3.utils.Pair;
 
 public interface WarehouseService {
-    Warehouse exportWarehouses();
-    Pair<Hop, ActionResult> getWarehouse(String code);
-    void importWarehouses(Warehouse warehouse);
+    WarehouseEntity exportWarehouses();
+    Pair<HopEntity, ActionResult> getWarehouse(String code);
+    void importWarehouses(WarehouseEntity warehouseEntity);
 }
