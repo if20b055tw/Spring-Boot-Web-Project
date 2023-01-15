@@ -23,8 +23,7 @@ public class WarehouseEntity extends HopEntity {
     @Column
     private Integer level;
 
-    @Column
-    @OneToMany
+    @OneToMany(/*mappedBy = "warehouse",*/ cascade = CascadeType.ALL)
     @NotNull
     private List<@NotNull WarehouseNextHopsEntity> nextHops = new ArrayList<>();
 

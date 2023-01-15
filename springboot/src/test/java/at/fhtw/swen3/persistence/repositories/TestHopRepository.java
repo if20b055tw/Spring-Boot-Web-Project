@@ -40,9 +40,10 @@ public class TestHopRepository {
         Assertions.assertEquals(0, hopRepository.count());
 
         HopEntity hopEntity = getHopEntity();
-        GeoCoordinateEntity geoCoordinateEntity = hopEntity.getLocationCoordinates();
+        //GeoCoordinateEntity geoCoordinateEntity = hopEntity.getLocationCoordinates();
+        //System.out.println("COORDS:" + geoCoordinateEntity.getLocation().toString());
 
-        geoCoordinateRepository.save(geoCoordinateEntity);
+        //geoCoordinateRepository.save(geoCoordinateEntity);
         hopRepository.save(hopEntity);
         Assertions.assertEquals(1, hopRepository.count());
 

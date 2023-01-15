@@ -1,1 +1,1 @@
-docker exec -it postgis-swkom bash
+  docker exec -it postgis-swkom bash

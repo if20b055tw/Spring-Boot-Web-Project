@@ -18,7 +18,7 @@ public class HopArrivalEntity {
     @Pattern(regexp = "^[A-Z]{4}\\d{1,4}$")
     private String code;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="parcel_id")
     @NotNull
     private ParcelEntity parcel;

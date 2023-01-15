@@ -9,6 +9,7 @@ import at.fhtw.swen3.services.dto.Error;
 import at.fhtw.swen3.services.dto.NewParcelInfo;
 import at.fhtw.swen3.services.dto.Parcel;
 import at.fhtw.swen3.services.dto.TrackingInformation;
+import at.fhtw.swen3.services.exceptions.BLException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -137,7 +138,7 @@ public interface ParcelApi {
     )
     default ResponseEntity<NewParcelInfo> submitParcel(
         @Parameter(name = "Parcel", description = "", required = true) @Valid @RequestBody Parcel parcel
-    ) {
+    ) throws BLException {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {

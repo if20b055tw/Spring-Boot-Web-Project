@@ -1,0 +1,19 @@
+==============================================================================
+TODO
+==============================================================================
+tstXD
+
+* Wire-Up Layers
+
+# S3
+  * Repository Tests
+
+# S4
+  * DB Konfiguration auslagern
+
+# S5
+  * GEO Encoding
+  * Exception Handling
+
+# S6
+  * XD
