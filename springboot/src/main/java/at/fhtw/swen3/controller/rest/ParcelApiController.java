@@ -117,12 +117,6 @@ public class ParcelApiController implements ParcelApi {
             log.info(e.getMessage());
             return new ResponseEntity<Error>(new Error().errorMessage("The operation failed due to an error."), HttpStatus.BAD_REQUEST);
         }
-        //switch (new)
-
-
-        //System.out.println(parcelEntity.getWeight());
-
-        //return ParcelApi.super.submitParcel(parcel);
     }
 
     @Override
