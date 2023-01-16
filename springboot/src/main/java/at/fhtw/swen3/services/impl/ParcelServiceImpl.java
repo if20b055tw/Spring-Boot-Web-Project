@@ -83,10 +83,6 @@ public class ParcelServiceImpl implements ParcelService {
                 if (hopEntity.get() instanceof TruckEntity) {
                     parcelEntity.get().setState(TrackingInformation.StateEnum.INTRUCKDELIVERY);
                 } else if (hopEntity.get() instanceof  TransferwarehouseEntity) {
-                    //HttpResponse response = HttpUtils.makeHttpRequest(getLogisticsPartnerUrl((TransferwarehouseEntity) hopEntity.get(), parcelEntity.get().getTrackingId()), "POST");
-                    //if (200 != response.getCode()) {
-
-                    //}
                     parcelEntity.get().setState(TrackingInformation.StateEnum.TRANSFERRED);
                 } else if (hopEntity.get() instanceof WarehouseEntity) {
                     parcelEntity.get().setState(TrackingInformation.StateEnum.INTRANSPORT);
