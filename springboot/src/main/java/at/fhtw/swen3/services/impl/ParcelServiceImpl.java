@@ -145,5 +145,6 @@ public class ParcelServiceImpl implements ParcelService {
     public Parcel transitionParcel(String trackingId, Parcel parcel) {
         log.info("Transition parcel with tracking ID: '" + trackingId + "'");
         return null;
+
     }
 }
