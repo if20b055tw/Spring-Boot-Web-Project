@@ -67,8 +67,9 @@ public class ParcelApiController implements ParcelApi {
             log.info(e.getMessage());
             return new ResponseEntity<Error>(new Error().errorMessage("The operation failed due to an error."), HttpStatus.BAD_REQUEST);
         }
-        
 
+
+        
 
         /*ActionResult actionResult = parcelService.reportParcelDelivery(trackingId);
         switch (actionResult.getResult()) {
