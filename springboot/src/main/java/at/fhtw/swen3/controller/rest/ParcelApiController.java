@@ -67,7 +67,9 @@ public class ParcelApiController implements ParcelApi {
             log.info(e.getMessage());
             return new ResponseEntity<Error>(new Error().errorMessage("The operation failed due to an error."), HttpStatus.BAD_REQUEST);
         }
-        
+
+
+
 
 
         /*ActionResult actionResult = parcelService.reportParcelDelivery(trackingId);
@@ -97,9 +99,6 @@ public class ParcelApiController implements ParcelApi {
             return new ResponseEntity<Error>(new Error().errorMessage("The operation failed due to an error."), HttpStatus.BAD_REQUEST);
         }
 
-        /*parcelService.reportParcelHop(trackingId, code);
-
-        return ParcelApi.super.reportParcelHop(trackingId, code);*/
     }
 
     @Override
@@ -115,41 +114,11 @@ public class ParcelApiController implements ParcelApi {
             log.info(e.getMessage());
             return new ResponseEntity<Error>(new Error().errorMessage("The operation failed due to an error."), HttpStatus.BAD_REQUEST);
         }
-        //switch (new)
-
-
-        //System.out.println(parcelEntity.getWeight());
-
-        //return ParcelApi.super.submitParcel(parcel);
     }
 
     @Override
     public ResponseEntity<TrackingInformation> trackParcel(String trackingId) {
         log.info("Calling: trackParcel");
-        /*Optional<TrackingInformation.StateEnum> state = parcelRepository.trackParcel(trackingId);
-        if (state.isPresent()) {
-
-        } else {
-            return
-        }*/
-
-        /*getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    //String exampleString = "{ \"visitedHops\" : [ { \"dateTime\" : \"2000-01-23T04:56:07.000+00:00\", \"code\" : \"code\", \"description\" : \"description\" }, { \"dateTime\" : \"2000-01-23T04:56:07.000+00:00\", \"code\" : \"code\", \"description\" : \"description\" } ], \"futureHops\" : [ { \"dateTime\" : \"2000-01-23T04:56:07.000+00:00\", \"code\" : \"code\", \"description\" : \"description\" }, { \"dateTime\" : \"2000-01-23T04:56:07.000+00:00\", \"code\" : \"code\", \"description\" : \"description\" } ], \"state\" : \"Pickup\" }";
-                    String exampleString = "{\"HAHAHAAHAHAH\": \"XD\"}";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });*/
-
-        //MultiValueMap lmvm = new LinkedMultiValueMap<>();
-        //lmvm.add("Content-Type", "application/json");
-
-        //return new ResponseEntity<>("{\"HAHAHAAHAHAH\": \"XD\"}", lmvm, HttpStatus.ACCEPTED);
-        //return new ResponseEntity<>(HttpStatus.ACCEPTED);
-
         Parcel trackingInformation = parcelService.trackParcel(trackingId);
         return ParcelApi.super.trackParcel(trackingId);
     }
@@ -157,11 +126,7 @@ public class ParcelApiController implements ParcelApi {
     @Override
     public ResponseEntity<NewParcelInfo> transitionParcel(String trackingId, Parcel parcel) {
         log.info("Calling: transitionParcel");
-//        ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
-//        ParcelEntity parcelEntity = parcelMapper.mapToTarget(parcel);
         Parcel newParcelInfo = parcelService.transitionParcel(trackingId, parcel);
-//        NewParcelInfo newParcelInfo = newParcelInfoMapper.mapToSource(newParcelInfoEntity);
-
         return ParcelApi.super.transitionParcel(trackingId, parcel);
     }
 
