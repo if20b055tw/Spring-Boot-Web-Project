@@ -99,9 +99,6 @@ public class ParcelApiController implements ParcelApi {
             return new ResponseEntity<Error>(new Error().errorMessage("The operation failed due to an error."), HttpStatus.BAD_REQUEST);
         }
 
-        /*parcelService.reportParcelHop(trackingId, code);
-
-        return ParcelApi.super.reportParcelHop(trackingId, code);*/
     }
 
     @Override
