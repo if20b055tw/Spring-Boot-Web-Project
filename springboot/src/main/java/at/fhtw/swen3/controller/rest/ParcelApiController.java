@@ -69,7 +69,7 @@ public class ParcelApiController implements ParcelApi {
         }
 
 
-        
+
 
 
         /*ActionResult actionResult = parcelService.reportParcelDelivery(trackingId);
