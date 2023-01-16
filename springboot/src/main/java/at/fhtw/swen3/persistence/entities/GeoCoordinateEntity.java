@@ -1,10 +1,12 @@
 package at.fhtw.swen3.persistence.entities;
 
+import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
@@ -20,7 +22,7 @@ public class GeoCoordinateEntity {
     @Column
     private Double lon;*/
 
-    @Column
+    @Column(columnDefinition = "Geometry")
     private Point location;
 
     @Column

@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Data
 public class TransferwarehouseEntity extends HopEntity {
     @Column
+    @Lob
     private String regionGeoJson;
 
     @Column

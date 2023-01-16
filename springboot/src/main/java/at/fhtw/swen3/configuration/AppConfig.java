@@ -4,7 +4,9 @@ import at.fhtw.swen3.controller.rest.ParcelApi;
 import at.fhtw.swen3.controller.rest.ParcelApiController;
 import at.fhtw.swen3.controller.rest.WarehouseApi;
 import at.fhtw.swen3.controller.rest.WarehouseApiController;
-import at.fhtw.swen3.persistence.repositories.HopArrivalRepository;
+import at.fhtw.swen3.gps.service.GeoEncodingService;
+import at.fhtw.swen3.gps.service.impl.OpenStreetMapsEncodingProxy;
+import at.fhtw.swen3.persistence.repositories.*;
 import at.fhtw.swen3.services.impl.ParcelService;
 import at.fhtw.swen3.services.impl.WarehouseService;
 import at.fhtw.swen3.services.impl.ParcelServiceImpl;
@@ -57,13 +59,25 @@ public class AppConfig {
     }*/
 
     @Bean
-    public ParcelService getParcelService(MyValidator myValidator){
-        return new ParcelServiceImpl(myValidator);
+    public GeoEncodingService getGeoEncodingService() {
+        return new OpenStreetMapsEncodingProxy();
     }
 
     @Bean
-    public WarehouseService getWarehouseService(MyValidator myValidator) {
-        return new WarehouseServiceImpl(myValidator);
+    public ParcelService getParcelService(MyValidator myValidator, ParcelMapper parcelMapper, ParcelRepository parcelRepository,
+                                          NewParcelInfoMapper newParcelInfoMapper, HopRepository hopRepository,
+                                          GeoEncodingService geoEncodingService){
+        return new ParcelServiceImpl(myValidator, parcelMapper, parcelRepository, newParcelInfoMapper, hopRepository, geoEncodingService);
+    }
+
+    @Bean
+    public WarehouseService getWarehouseService(MyValidator myValidator, WarehouseMapper warehouseMapper,
+                                                WarehouseRepository warehouseRepository, GeoCoordinateRepository geoCoordinateRepository,
+                                                WarehouseNextHopsRepository warehouseNextHopsRepository, HopRepository hopRepository,
+                                                TransferwarehouseRepository transferwarehouseRepository, TruckRepository truckRepository,
+                                                HopMapper hopMapper) {
+        return new WarehouseServiceImpl(myValidator, warehouseMapper, warehouseRepository, geoCoordinateRepository,
+                warehouseNextHopsRepository, hopRepository, transferwarehouseRepository, truckRepository, hopMapper);
     }
 
     @Bean

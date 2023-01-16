@@ -23,22 +23,24 @@ public class ParcelEntity {
     @Min(0)
     private Float weight;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @NotNull
     private RecipientEntity recipient;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @NotNull
     private RecipientEntity sender;
 
     @Column
     private TrackingInformation.StateEnum state;
 
-    @OneToMany(mappedBy = "parcel")
+    @OneToMany(mappedBy = "parcel", cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "parcel")
     @NotNull
     private List<@NotNull HopArrivalEntity> visitedHops = new ArrayList<>();
 
-    @OneToMany(mappedBy = "parcel")
+    @OneToMany(mappedBy = "parcel", cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "parcel")
     @NotNull
     private List<@NotNull HopArrivalEntity> futureHops = new ArrayList<>();
 

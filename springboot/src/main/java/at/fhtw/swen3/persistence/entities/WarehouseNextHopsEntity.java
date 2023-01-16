@@ -17,14 +17,14 @@ public class WarehouseNextHopsEntity {
     @Column
     private Integer traveltimeMins;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @NotNull
     private HopEntity hop;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_warehouse")
-    @NotNull
-    private WarehouseEntity warehouseDal;
+    /*@ManyToOne
+    @JoinColumn(name = "warehouse_id")
+    //@NotNull
+    private WarehouseEntity warehouse;*/
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")

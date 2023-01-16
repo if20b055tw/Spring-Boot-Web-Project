@@ -67,13 +67,13 @@ public class TestHopArrivalRepository {
         Assertions.assertEquals(0, hopArrivalRepository.count());
 
         HopArrivalEntity hopArrivalEntity = getHopArrivalEntity();
-        ParcelEntity parcelEntity = hopArrivalEntity.getParcel();
-        RecipientEntity recipient = parcelEntity.getRecipient();
-        RecipientEntity sender = parcelEntity.getSender();
+        //ParcelEntity parcelEntity = hopArrivalEntity.getParcel();
+        //RecipientEntity recipient = parcelEntity.getRecipient();
+        //RecipientEntity sender = parcelEntity.getSender();
 
-        recipientRepository.save(recipient);
-        recipientRepository.save(sender);
-        parcelRepository.save(parcelEntity);
+        //recipientRepository.save(recipient);
+        //recipientRepository.save(sender);
+        //parcelRepository.save(parcelEntity);
         hopArrivalRepository.save(hopArrivalEntity);
         Assertions.assertEquals(1, hopArrivalRepository.count());
 
