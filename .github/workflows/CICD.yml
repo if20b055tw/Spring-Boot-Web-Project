@@ -65,6 +65,12 @@ jobs:
         with:
           name: artifact
       #Deploy the artifact (JAR) into AWS Beanstalk
+      - name: set environment variables
+        run: |
+          echo "::set-env name=DB_HOST::${{ secrets.DB_HOST }}
+          echo "::set-env name=DB_USER::${{ secrets.DB_USER }}
+          echo "::set-env name=DB_PW::${{ secrets.DB_PW }}
+          echo "::set-env name=DB_NAME::${{ secrets.DB_NAME }}
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v13
         with:
@@ -77,9 +83,9 @@ jobs:
           version_label: ${{github.SHA}}
           region: us-east-1
           deployment_package: openapi-spring-1.22.1.jar
-        env: 
-            DB_HOST: ${{ secrets.DB_HOST }}
-            DB_USER: ${{ secrets.DB_USER }}
-            DB_PW: ${{ secrets.DB_PW }}
-            DB_NAME: ${{ secrets.DB_NAME }}
-            
+        env:
+          DB_HOST: ${{ env.DB_HOST }}
+          DB_USER: ${{ env.DB_USER }}
+          DB_PW: ${{ env.DB_PW }}
+          DB_NAME: ${{ env.DB_NAME }}
+
